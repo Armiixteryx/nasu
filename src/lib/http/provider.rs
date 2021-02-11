@@ -72,13 +72,13 @@ mod tests {
 
     #[test]
     fn it_performs_a_target() {
-        let target = Config::new("https://httpbin.org/status/200", "GET");
+        let target = Config::new("HTTPBin GET", "https://httpbin.org/status/200", "GET");
         let provider = Provider::new(target);
 
         let resume = bo!(provider.perform());
 
         assert!(resume.is_success);
-        assert_eq!(resume.fragment, Vec::new());
+        assert_eq!(resume.fragment, Vec::<u8>::new());
         assert_eq!(resume.host, "https://httpbin.org/status/200");
     }
 }
